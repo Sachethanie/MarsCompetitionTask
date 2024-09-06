@@ -1,0 +1,38 @@
+[
+  {    
+    "CountryOfCollage": "Sri Lanka",
+    "Degree": "Science and Technology",
+    "Title": "B.Sc",
+    "YearOfGraduation": "2018"
+  },
+
+  {
+    "UniversityName": "Uva Wellassa University",   
+    "Degree": "Science and Technology",
+    "Title": "B.Sc",
+    "YearOfGraduation": "2018"
+  },
+
+  {
+    "UniversityName": "Uva Wellassa University",
+    "CountryOfCollage": "Sri Lanka",    
+    "Title": "B.Sc",
+    "YearOfGraduation": "2018"
+  },
+
+  {
+    "UniversityName": "Uva Wellassa University",
+    "CountryOfCollage": "Sri Lanka",
+    "Degree": "Science and Technology",    
+    "YearOfGraduation": "2018"
+  },
+
+  {
+    "UniversityName": "Uva Wellassa University",
+    "CountryOfCollage": "Sri Lanka",
+    "Degree": "Science and Technology",
+    "Title": "B.Sc"
+  }
+
+
+]
