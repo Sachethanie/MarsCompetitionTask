@@ -16,7 +16,6 @@ namespace CompetitionTaskProjectMars.Models
                     yield return new TestCaseData(item);
                 }
             }
-
         }
 
         public static IEnumerable<TestCaseData> EditEducation
@@ -31,7 +30,6 @@ namespace CompetitionTaskProjectMars.Models
                     yield return new TestCaseData(item.Create, item.Update);
                 }
             }
-
         }
 
         public static IEnumerable<TestCaseData> MandetoryFieldValidationOfEducation
@@ -46,22 +44,6 @@ namespace CompetitionTaskProjectMars.Models
                     yield return new TestCaseData(item);
                 }
             }
-
-        }
-
-        public static IEnumerable<TestCaseData> AddExistingEducationRecordAsANewRecord
-        {
-            get
-            {
-                var json = File.ReadAllText("Data\\AddExistingEducationRecordAsANewRecord.json");
-                var data = JsonConvert.DeserializeObject<List<Education>>(json);
-
-                foreach (var item in data)
-                {
-                    yield return new TestCaseData(item);
-                }
-            }
-
         }
 
         public static IEnumerable<TestCaseData> EditEducationRecordToAnotherExistingEducationRecord
@@ -76,7 +58,6 @@ namespace CompetitionTaskProjectMars.Models
                     yield return new TestCaseData(item.Create, item.Update);
                 }
             }
-
         }
 
         public static IEnumerable<TestCaseData> AddInvalidEducationRecord
@@ -91,8 +72,6 @@ namespace CompetitionTaskProjectMars.Models
                     yield return new TestCaseData(item);
                 }
             }
-
         }
-
     }
 }

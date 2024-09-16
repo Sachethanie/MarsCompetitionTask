@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 
 namespace CompetitionTaskProjectMars.Pages
 {
-
     public class SignIn : Driver
         {
             private static IWebElement SignInBtn => driver.FindElement(By.XPath("//A[@class='item'][text()='Sign In']"));
@@ -21,7 +20,6 @@ namespace CompetitionTaskProjectMars.Pages
                 Password.SendKeys(ExcelLibHelper.ReadData(2, "password"));
                 LoginBtn.Click();
                 WaitHelper.WaitToBeVisible(LocatorType.xPath, SignOutXpath, 5);
-
             }
             public static void Login()
             {
@@ -38,7 +36,6 @@ namespace CompetitionTaskProjectMars.Pages
 
                 //Click on Login Button
                 Driver.driver.FindElement(By.XPath("//BUTTON[@class='fluid ui teal button'][text()='Login']")).Click();
-
             }
 
             public static void SuccessfullyNavigateToProfilePageWithSelectedLanguageTab(IWebDriver driver)

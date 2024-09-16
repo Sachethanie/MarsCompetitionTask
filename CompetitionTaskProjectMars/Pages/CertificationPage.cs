@@ -6,8 +6,6 @@ using SeleniumExtras.WaitHelpers;
 
 namespace CompetitionTaskProjectMars.Pages
 {
-
-
     public class CertificationPage : Driver
     {
         private static IWebElement CertificationTab => driver.FindElement(By.XPath("//a[@class='item' and text()='Certifications']"));
@@ -17,10 +15,7 @@ namespace CompetitionTaskProjectMars.Pages
         private static IWebElement Certificate => driver.FindElement(By.XPath("//input[@type='text' and @name='certificationName']"));
         private static IWebElement CertifiedFrom => driver.FindElement(By.XPath("//input[@class='received-from capitalize' and @name='certificationFrom']"));
         private static IWebElement Year => driver.FindElement(By.XPath("//select[@name='certificationYear']"));
-
         private static IWebElement CancelButton => driver.FindElement(By.XPath("//input[@type='button' and @class='ui button']"));
-
-
 
         public void NavigateToCertificationForm()
         {
@@ -40,11 +35,9 @@ namespace CompetitionTaskProjectMars.Pages
 
         public void CleanUpAddedCertificationAfterTest(Certification certification)
         {
-
             var deletePencilIcon = GetDeletePencilIcon(certification);
             
             deletePencilIcon?.Click();
-
         }
 
         public void AssertionPopupMessage(string expectedMessage)
@@ -67,7 +60,6 @@ namespace CompetitionTaskProjectMars.Pages
             Assert.That(certificationRows, Is.Empty, $"Education {certification.Certificate} was found in the list, but it should  not have been in the list.");
         }
 
-
         public static IWebElement GetEditPencilIcon(Certification certification)
         {
             //unique key - university name, country, degree, title  check the all value in the raw and get the pecil icon    
@@ -84,8 +76,7 @@ namespace CompetitionTaskProjectMars.Pages
             wait.Until(ExpectedConditions.InvisibilityOfElementLocated(loadingImage));
 
             //unique key - university name, country, degree, title  check the all value in the raw and get the pecil icon    
-            return driver.FindElement(By.XPath($"//tr[td[text()='{certification.Certificate}'] and td[text()='{certification.CertifiedFrom}'] and td[text()='{certification.Year}']]//i[contains(@class, 'remove icon')]"));
-            
+            return driver.FindElement(By.XPath($"//tr[td[text()='{certification.Certificate}'] and td[text()='{certification.CertifiedFrom}'] and td[text()='{certification.Year}']]//i[contains(@class, 'remove icon')]"));           
 
         }
 
@@ -98,10 +89,8 @@ namespace CompetitionTaskProjectMars.Pages
             AddButton.Click();
 
         }
-
         public void CannotBeAbleToAddCertificationRecordWithoutAddingAllFields(Certification mandetoryFieldValidation)
         {
-
             AddNewButton.Click();
             if (!string.IsNullOrEmpty(mandetoryFieldValidation.Certificate))
             {
@@ -120,8 +109,6 @@ namespace CompetitionTaskProjectMars.Pages
             }
 
             AddButton.Click();
-
-
         }
 
         public void CannotBeAbleToAddExistingCertificationRecordAsANewCertificationRecord(Certification addCertification)
@@ -134,7 +121,6 @@ namespace CompetitionTaskProjectMars.Pages
             CancelButton.Click();
 
         }
-
         public void SuccessfullyEditCertificationRecord(Certification addCertification, Certification editCertification)
         {
             var editPencilIcon = GetEditPencilIcon(addCertification);
@@ -148,7 +134,6 @@ namespace CompetitionTaskProjectMars.Pages
             UpdateButton.Click();
         }
 
-
         public void SuccessfullyEditOnlyOneValueOfCertificationRecord(Certification addCertification, Certification editCertification)
         {
             var editPencilIcon = GetEditPencilIcon(addCertification);
@@ -157,7 +142,6 @@ namespace CompetitionTaskProjectMars.Pages
             Certificate.SendKeys(editCertification.Certificate);
             UpdateButton.Click();
         }
-
         public void CannotBeAbleToEditExistingCertificationToAnotherExistingCertificationRecord(Certification addCertification, Certification editCertification)
         {
             var editPencilIcon = GetEditPencilIcon(addCertification);
@@ -171,16 +155,13 @@ namespace CompetitionTaskProjectMars.Pages
             UpdateButton.Click();
             CancelButton.Click();
         }
-
         public void CannotBeAbleToAddInvalidCertificationRecord(Certification addCertification)
         {
             AddNewButton.Click();
             Certificate.SendKeys(addCertification.Certificate);
             CertifiedFrom.SendKeys(addCertification.CertifiedFrom);
             Year.SendKeys(addCertification.Year);
-            AddButton.Click();
-            
-
+            AddButton.Click(); 
         }
 
         public void SuccessfullyDeleteCertificationRecord(Certification addCertification)
@@ -188,10 +169,6 @@ namespace CompetitionTaskProjectMars.Pages
             var deletePencilIcon = GetDeletePencilIcon(addCertification);
             deletePencilIcon.Click();
         }
-
-
-
-
     }
 }
 

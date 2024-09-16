@@ -4,18 +4,13 @@ using CompetitionTaskProjectMars.Models;
 using CompetitionTaskProjectMars.Pages;
 
 namespace CompetitionTaskProjectMars.Tests
-{
-    //create branch and commit to git 
-    // remove order, 
-
-
+{ 
     [TestFixture]
     public class CertificationTest : BaseClass
     {
-
         private readonly CertificationPage certificationPage;
         private Certification _CertificationToCleanup; 
-
+        
         public CertificationTest()
         {
             certificationPage = new CertificationPage();
@@ -42,9 +37,7 @@ namespace CompetitionTaskProjectMars.Tests
                 certificationPage.CleanUpAddedCertificationAfterTest(_CertificationToCleanup);
                 _CertificationToCleanup = null; // Reset for the next test
             }
-        }
-
-     
+        }     
 
         [Test]
         [TestCaseSource(typeof(CertificationTestData),nameof(CertificationTestData.AddCertifications))]
@@ -61,14 +54,12 @@ namespace CompetitionTaskProjectMars.Tests
             certificationPage.AssertionPopupMessage(expectedMessage);
 
             certificationPage.ViewCertificationInTable(addCertification);
-
         }
 
         [Test]
         [TestCaseSource(typeof(CertificationTestData), nameof(CertificationTestData.EditCertifications))]
         public void SuccessfullyEditCertification(Certification addCertification, Certification editCertification)
         {
-
             //act 
             certificationPage.SuccessfullyAddCertificationRecord(addCertification);
             certificationPage.SuccessfullyEditCertificationRecord(addCertification, editCertification);
@@ -78,9 +69,7 @@ namespace CompetitionTaskProjectMars.Tests
             certificationPage.AssertionPopupMessage(expectedMessage);
 
             certificationPage.ViewCertificationInTable(editCertification);
-
         }
-
 
         [Test]
         [TestCaseSource(typeof(CertificationTestData), nameof(CertificationTestData.MandetoryFieldValidationOfCertification))]
@@ -90,27 +79,22 @@ namespace CompetitionTaskProjectMars.Tests
 
             var expectedMessage = "Please enter Certification Name, Certification From and Certification Year";
             certificationPage.AssertionPopupMessage(expectedMessage);          
-
         }
-
 
         [Test]
         [TestCaseSource(typeof(CertificationTestData), nameof(CertificationTestData.AddCertifications))]
         public void CannotBeAbleToAddExistingCertificationRecordAsANewCertificationRecord(Certification addCertifications)
-        {         
-
+        { 
             certificationPage.SuccessfullyAddCertificationRecord(addCertifications);         
             certificationPage.CannotBeAbleToAddExistingCertificationRecordAsANewCertificationRecord(addCertifications);
             _CertificationToCleanup = addCertifications;
 
             var expectedMessage = "This information is already exist.";
-            certificationPage.AssertionPopupMessage(expectedMessage);          
-
+            certificationPage.AssertionPopupMessage(expectedMessage);
         }
 
         [Test]
         [TestCaseSource(typeof(CertificationTestData), nameof(CertificationTestData.EditOneValueOfCertification))]
-
         public void SuccessfullyEditOnlyOneValueOfCertificationRecord(Certification addCertifications, Certification editOneValueOfCertificationCertifications)
         {        
 
@@ -121,43 +105,36 @@ namespace CompetitionTaskProjectMars.Tests
             var expectedMessage = $"{editOneValueOfCertificationCertifications.Certificate} has been updated to your certification";
             certificationPage.AssertionPopupMessage(expectedMessage);
 
-            certificationPage.ViewCertificationInTable(editOneValueOfCertificationCertifications);
-
-            
+            certificationPage.ViewCertificationInTable(editOneValueOfCertificationCertifications);            
         } 
 
         [Test]
         [TestCaseSource(typeof(CertificationTestData), nameof(CertificationTestData.EditCertificationRecordToAnotherExistingCertificationRecord))]
         public void CannotBeAbleToEditExistingCertificationRedcordToAnotherExistingCertificationRecord(Certification addCertifications, Certification editRecordToAnotherExistingRecord)
-        {        
-
+        {
             certificationPage.SuccessfullyAddCertificationRecord(addCertifications);            
             certificationPage.CannotBeAbleToEditExistingCertificationToAnotherExistingCertificationRecord(addCertifications, editRecordToAnotherExistingRecord);
             _CertificationToCleanup = addCertifications;
 
             var expectedMessage = "This information is already exist.";
-            certificationPage.AssertionPopupMessage(expectedMessage);
-            
+            certificationPage.AssertionPopupMessage(expectedMessage);            
         }
 
         [Test]
         [TestCaseSource(typeof(CertificationTestData), nameof(CertificationTestData.AddInvalidCertificationRecord))]
         public void CannotBeAbleToAddCertificationRecordWithInvalidData(Certification addInvalidData)
-        {          
-
+        {    
             certificationPage.CannotBeAbleToAddInvalidCertificationRecord(addInvalidData);
             _CertificationToCleanup = addInvalidData;
 
             var expectedMessage = $"{addInvalidData.Certificate} has been added to your certification"; //'Education with invalid inputs was added.But I Cannot be able to Add a record with invalid inputs. So this could be a bug'
-            certificationPage.AssertionPopupMessage(expectedMessage);
-           
+            certificationPage.AssertionPopupMessage(expectedMessage);           
         }
 
         [Test]
         [TestCaseSource(typeof(CertificationTestData), nameof(CertificationTestData.AddCertifications))]
         public void SuccessfullyDeleteCertificationRecord(Certification addCertification)
-        {         
-
+        {        
             certificationPage.SuccessfullyAddCertificationRecord(addCertification);
             certificationPage.SuccessfullyDeleteCertificationRecord(addCertification);
 
@@ -166,7 +143,5 @@ namespace CompetitionTaskProjectMars.Tests
 
             certificationPage.CannotViewEducationInTable(addCertification);
         } 
-
-
     }
 }

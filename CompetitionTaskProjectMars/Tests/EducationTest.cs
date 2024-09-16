@@ -4,19 +4,14 @@ using CompetitionTaskProjectMars.Pages;
 
 namespace CompetitionTaskProjectMars.Tests
 {
-
     [TestFixture ]
     public class EducationTest : BaseClass
     {
-
         private readonly EducationPage educationPage;
         private Education _EducationToCleanup;
-
         public EducationTest()
         {
             educationPage = new EducationPage();  
-
-
         }
 
         [SetUp, Order(0)]
@@ -42,12 +37,10 @@ namespace CompetitionTaskProjectMars.Tests
             }
         }
 
-
         [Test]
         [TestCaseSource(typeof(EducationTestData), nameof(EducationTestData.AddEducation))]
-
         public void SuccessfullyAddEducation(Education addEducation)
-        {           
+        {
             //act 
             educationPage.SuccessfullyAddEducationRecord(addEducation);
             _EducationToCleanup= addEducation;
@@ -60,10 +53,8 @@ namespace CompetitionTaskProjectMars.Tests
 
         [Test]
         [TestCaseSource(typeof(EducationTestData), nameof(EducationTestData.EditEducation))]
-
         public void SuccessfullyEditEducation(Education addEducation, Education editEducation)
-        {
-            
+        {            
             //act 
             educationPage.SuccessfullyAddEducationRecord(addEducation);
             educationPage.SuccessfullyEditEducationRecord(addEducation, editEducation);
@@ -72,10 +63,8 @@ namespace CompetitionTaskProjectMars.Tests
             //Assert
             var expectedMessage = "Education as been updated";
             educationPage.AssertionPopupMessage(expectedMessage);
-            educationPage.ViewEducationInTable(editEducation);
-           
+            educationPage.ViewEducationInTable(editEducation);           
         }
-
 
         [Test]
         [TestCaseSource(typeof(EducationTestData), nameof(EducationTestData.MandetoryFieldValidationOfEducation))]
@@ -96,11 +85,8 @@ namespace CompetitionTaskProjectMars.Tests
             educationPage.CannotBeAbleToAddExistingEducationRecordAsANewEducationRecord(addEducation);
 
             var expectedMessage = "This information is already exist.";
-            educationPage.AssertionPopupMessage(expectedMessage);         
-
+            educationPage.AssertionPopupMessage(expectedMessage); 
         }
-
-
 
         [Test]
         [TestCaseSource(typeof(EducationTestData), nameof(EducationTestData.EditEducationRecordToAnotherExistingEducationRecord))]
@@ -111,9 +97,7 @@ namespace CompetitionTaskProjectMars.Tests
             _EducationToCleanup = addEducation;
 
             var expectedMessage = "This information is already exist.";
-            educationPage.AssertionPopupMessage(expectedMessage);
-
-            
+            educationPage.AssertionPopupMessage(expectedMessage);            
         }
 
         [Test]
@@ -124,8 +108,7 @@ namespace CompetitionTaskProjectMars.Tests
             _EducationToCleanup = addEducation;
 
             var expectedMessage = "Education has been added"; //'Education with invalid inputs was added.But I Cannot be able to Add a record with invalid inputs. So this could be a bug'
-            educationPage.AssertionPopupMessage(expectedMessage);
-            
+            educationPage.AssertionPopupMessage(expectedMessage);            
         }
 
         [Test]
@@ -140,10 +123,6 @@ namespace CompetitionTaskProjectMars.Tests
 
             educationPage.CannotViewEducationInTable(addEducation);
         }
-
-
-
-
     }
 }
 

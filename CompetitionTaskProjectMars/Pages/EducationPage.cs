@@ -34,12 +34,10 @@ namespace CompetitionTaskProjectMars.Pages
         }
 
         public void CleanUpAddedEducationAfterTest(Education education)
-        {
-                        
+        {                        
                 var deletePencilIcon = GetDeletePencilIcon(education);
 
-                deletePencilIcon?.Click();
-            
+            deletePencilIcon?.Click();            
         }
 
         public void AssertionPopupMessage(string expectedMessage)
@@ -49,7 +47,7 @@ namespace CompetitionTaskProjectMars.Pages
             string actualMessage = toastMessageElement.First ().Text;
             Assert.That(actualMessage, Is.EqualTo(expectedMessage));
         }
-         
+        
         public void ViewEducationInTable(Education education)
         {
             var educationRow = driver.FindElements(By.XPath($"//tr[td[text()='{education.UniversityName}'] and td[text()='{education.CountryOfCollage}'] and td[text()='{education.Degree}']]//i[contains(@class, 'outline write icon')]"));
@@ -62,7 +60,6 @@ namespace CompetitionTaskProjectMars.Pages
             Assert.That(educationRows, Is.Empty, $"Education {education.UniversityName} was found in the list, but it should  not have been in the list.");
         }
 
-
         public static IWebElement GetEditPencilIcon(Education education)
         {
             //unique key - university name, country, degree, title  check the all value in the raw and get the pecil icon    
@@ -74,7 +71,6 @@ namespace CompetitionTaskProjectMars.Pages
             //unique key - university name, country, degree, title  check the all value in the raw and get the pecil icon    
             return driver.FindElement(By.XPath($"//tr[td[text()='{education.UniversityName}'] and td[text()='{education.CountryOfCollage}'] and td[text()='{education.Degree}']]//i[contains(@class, 'remove icon')]"));
         }
-
         public void SuccessfullyAddEducationRecord(Education addEducation)
         {
             AddNewButton.Click();
@@ -84,7 +80,6 @@ namespace CompetitionTaskProjectMars.Pages
             Degree.SendKeys(addEducation.Degree);
             YearOfGraduation.SendKeys(addEducation.YearOfGraduation);
             AddButton.Click();
-
         }
 
         public void CannotBeAbleToAddEductionRecordWithoutAddingAllFields(Education mandetoryFieldValidation)
@@ -114,9 +109,7 @@ namespace CompetitionTaskProjectMars.Pages
             {
                 YearOfGraduation.SendKeys(mandetoryFieldValidation.YearOfGraduation);
             }
-
             AddButton.Click();
-
         }
 
         public void CannotBeAbleToAddExistingEducationRecordAsANewEducationRecord(Education addEducation)
@@ -129,7 +122,6 @@ namespace CompetitionTaskProjectMars.Pages
             YearOfGraduation.SendKeys(addEducation.YearOfGraduation);
             AddButton.Click();
             CancelButton.Click();
-
         } 
 
         public void SuccessfullyEditEducationRecord(Education addEducation, Education editEducation)
@@ -147,8 +139,7 @@ namespace CompetitionTaskProjectMars.Pages
             YearOfGraduation.Click();
             YearOfGraduation.SendKeys(editEducation.YearOfGraduation);
             UpdateButton.Click();
-        }
-              
+        }              
 
         public void CannotBeAbleToEditEducationToAnotherExistingEducationRecord(Education addEducation, Education editEducation)
         {
@@ -177,7 +168,6 @@ namespace CompetitionTaskProjectMars.Pages
             Degree.SendKeys(addEducation.Degree);
             YearOfGraduation.SendKeys(addEducation.YearOfGraduation);
             AddButton.Click();
-
         }
 
         public void SuccessfullyDeleteEducationRecord(Education addEducation)
