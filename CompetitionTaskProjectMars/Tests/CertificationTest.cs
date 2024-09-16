@@ -1,4 +1,5 @@
-﻿using CompetitionTaskProjectMars.Helpers;
+﻿using AventStack.ExtentReports;
+using CompetitionTaskProjectMars.Helpers;
 using CompetitionTaskProjectMars.Models;
 using CompetitionTaskProjectMars.Pages;
 
@@ -32,7 +33,7 @@ namespace CompetitionTaskProjectMars.Tests
             certificationPage.CleanUpDataBeforeTestStart();
         }
 
-        [TearDown]
+        [TearDown,Order(0)]
         public void Cleanup()
         {
             // Cleanup only the data that was affected by the current test
@@ -43,10 +44,14 @@ namespace CompetitionTaskProjectMars.Tests
             }
         }
 
+     
+
         [Test]
         [TestCaseSource(typeof(CertificationTestData),nameof(CertificationTestData.AddCertifications))]
         public void SuccessfullyAddCertification(Certification addCertification)
-        {           
+        {
+            test = extent.CreateTest("Successfully add certification").Info("Test Started");
+
             //act 
             certificationPage.SuccessfullyAddCertificationRecord(addCertification);
             _CertificationToCleanup = addCertification;

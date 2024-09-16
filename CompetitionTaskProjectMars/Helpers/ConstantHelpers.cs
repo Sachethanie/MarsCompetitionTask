@@ -22,6 +22,6 @@ namespace CompetitionTaskProjectMars.Helpers
         public static string ReportXMLPath = "TestReports";
 
         //Reporthtml Path
-        public static string ReportHTMLPath = "C:\\Src\\MVPStudio\\Mars\\MarsQA\\TestReports\\report.html";
+        public static string ReportHTMLPath = "C:\\Src\\MVPStudio\\Mars\\MarsCompetitionTask\\TestReports\\report.html";
     }
 }
