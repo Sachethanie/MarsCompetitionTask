@@ -12,8 +12,6 @@ namespace CompetitionTaskProjectMars.Utils
             Initialize();
             //call the SignIn class
             SignIn.SigninStep();
-        }
-
-      
+        }      
     }
 }

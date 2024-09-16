@@ -16,10 +16,6 @@ namespace CompetitionTaskProjectMars.Helpers
 
         private static readonly List<Datacollection> DataCol = new List<Datacollection>();
 
-        // The following code helps to quit the windows in which you only need to pass the name of excel.
-
-
-        // ReSharper disable once UnusedMember.Local
         private static void QuitExcel(string processtitle)
         {
             var processes = from p in Process.GetProcessesByName("EXCEL")
@@ -30,12 +26,10 @@ namespace CompetitionTaskProjectMars.Helpers
                     process.Kill();
         }
 
-
         private static void ClearData()
         {
             DataCol.Clear();
         }
-
 
         private static DataTable ExcelToDataTable(string fileName, string sheetName)
         {
@@ -62,8 +56,6 @@ namespace CompetitionTaskProjectMars.Helpers
             }
         }
 
-
-
         public static string ReadData(int rowNumber, string columnName)
         {
             try
@@ -86,8 +78,6 @@ namespace CompetitionTaskProjectMars.Helpers
                 return null;
             }
         }
-
-
         public static void PopulateInCollection(string fileName, string sheetName)
         {
             ClearData();
@@ -105,9 +95,8 @@ namespace CompetitionTaskProjectMars.Helpers
                     };
                     //Add all the details for each row
                     DataCol.Add(dtTable);
-                }
+                }        
         }
-
         private class Datacollection
         {
             public int RowNumber { get; set; }
@@ -115,7 +104,6 @@ namespace CompetitionTaskProjectMars.Helpers
             public string ColValue { get; set; }
         }
     }
-
     #endregion 
 
 }
