@@ -22,6 +22,8 @@ namespace CompetitionTaskProjectMars.Tests
             certificationPage.NavigateToCertificationForm();
         }
 
+     
+
         [SetUp, Order(1)]
         public void CleanUpBeforeTest()
         {

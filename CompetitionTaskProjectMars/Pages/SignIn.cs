@@ -1,4 +1,5 @@
 ﻿using CompetitionTaskProjectMars.Helpers;
+using CompetitionTaskProjectMars.Models;
 using CompetitionTaskProjectMars.Utils;
 using OpenQA.Selenium;
 
@@ -12,12 +13,12 @@ namespace CompetitionTaskProjectMars.Pages
             private static IWebElement LoginBtn => driver.FindElement(By.XPath("//BUTTON[@class='fluid ui teal button'][text()='Login']"));
 
             public static string SignOutXpath = "//button[@class='ui green basic button'][text()='Sign Out']";
-            public static void SigninStep()
+            public static void SigninStep(Login login)
             {
                 Driver.NavigateUrl();
                 SignInBtn.Click();
-                Email.SendKeys(ExcelLibHelper.ReadData(2, "username"));
-                Password.SendKeys(ExcelLibHelper.ReadData(2, "password"));
+                Email.SendKeys(login.Username);
+                Password.SendKeys(login.Password);
                 LoginBtn.Click();
                 WaitHelper.WaitToBeVisible(LocatorType.xPath, SignOutXpath, 5);
             }

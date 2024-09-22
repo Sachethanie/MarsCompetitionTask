@@ -55,6 +55,9 @@
     <None Update="Data\EditCertificationRecordToAnotherExistingCertificationRecord.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Data\LoginCredentials.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Data\MandetoryFieldValidationOfCertification.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
