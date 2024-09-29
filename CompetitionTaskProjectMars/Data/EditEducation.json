@@ -1,0 +1,22 @@
+[
+  {
+    "Create": {
+
+      "UniversityName": "Uva Wellassa University",
+      "CountryOfCollage": "Sri Lanka",
+      "Degree": "Science and Technology",
+      "Title": "B.Sc",
+      "YearOfGraduation": "2018"
+    },
+
+
+    "Update": {
+
+      "UniversityName": "Auckland University",
+      "CountryOfCollage": "New Zealand",
+      "Degree":"Computer Science and Technology",
+      "Title":"B.Tech",
+      "YearOfGraduation":"2020"
+    }
+  }
+]

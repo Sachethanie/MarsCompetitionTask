@@ -1,0 +1,14 @@
+[
+  {
+
+    "Certificate": "ABC!@#123",
+    "CertifiedFrom": "QWe123$%^",
+    "Year": "2024"
+  },
+  {
+
+    "Certificate": "clients and servers communicate with each other over a network to perform tasks and exchange data is called as Client-Server Architecture. Client-server communication is facilitated by communication protocols that define rules and standards for data exchange between clients and servers. Common communication protocols used in client-server architecture include HTTP (Hypertext Transfer Protocol) for web-based applications, SMTP (Simple Mail Transfer Protocol) for email communication, FTP (File Transfer Protocol) for file transfer, and TCP/IP (Transmission Control Protocol/Internet Protocol) for general network communication. Client-server communication follows a request-response model, where clients send requests to servers, and servers respond to those requests with the requested data or services. Clients are responsible for initiating communication by sending requests, while servers wait for incoming requests, process them, and send back responses. This model enables asynchronous communication between clients and servers, allowing multiple clients to interact with a single server simultaneously.",
+    "CertifiedFrom": "Industry Connect",
+    "Year": "2024"
+  }
+]
