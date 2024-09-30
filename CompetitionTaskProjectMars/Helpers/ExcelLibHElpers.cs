@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using ExcelDataReader;
+﻿using ExcelDataReader;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CompetitionTaskProjectMars.Helpers
+namespace ProjectMars.Helpers
 {
     class ExcelLibHelper
     {

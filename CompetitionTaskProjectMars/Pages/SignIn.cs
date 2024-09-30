@@ -1,9 +1,9 @@
-﻿using CompetitionTaskProjectMars.Helpers;
-using CompetitionTaskProjectMars.Models;
-using CompetitionTaskProjectMars.Utils;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using ProjectMars.Helpers;
+using ProjectMars.Models;
+using ProjectMars.Utils;
 
-namespace CompetitionTaskProjectMars.Pages
+namespace ProjectMars.Pages
 {
     public class SignIn : Driver
         {

@@ -1,8 +1,8 @@
-﻿using CompetitionTaskProjectMars.Helpers;
-using CompetitionTaskProjectMars.Models;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using ProjectMars.Helpers;
+using ProjectMars.Models;
 
-namespace CompetitionTaskProjectMars.Pages
+namespace ProjectMars.Pages
 {
     public class EducationPage : Driver
     {

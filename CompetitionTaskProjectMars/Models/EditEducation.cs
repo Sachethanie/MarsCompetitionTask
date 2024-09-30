@@ -1,4 +1,4 @@
-﻿namespace CompetitionTaskProjectMars.Models
+﻿namespace ProjectMars.Models
 {
     public class EditEducation
     {

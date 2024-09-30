@@ -1,9 +1,9 @@
-﻿using CompetitionTaskProjectMars.Helpers;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using ProjectMars.Helpers;
 using SeleniumExtras.WaitHelpers;
 
-namespace CompetitionTaskProjectMars.Utils
+namespace ProjectMars.Utils
 {
     public enum LocatorType
     {

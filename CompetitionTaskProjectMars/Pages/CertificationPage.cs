@@ -1,10 +1,10 @@
-﻿using CompetitionTaskProjectMars.Helpers;
-using CompetitionTaskProjectMars.Models;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using ProjectMars.Helpers;
+using ProjectMars.Models;
 using SeleniumExtras.WaitHelpers;
 
-namespace CompetitionTaskProjectMars.Pages
+namespace ProjectMars.Pages
 {
     public class CertificationPage : Driver
     {

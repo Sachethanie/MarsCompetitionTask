@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompetitionTaskProjectMars.Helpers
+namespace ProjectMars.Helpers
 {
     public class ConstantHelpers
     {

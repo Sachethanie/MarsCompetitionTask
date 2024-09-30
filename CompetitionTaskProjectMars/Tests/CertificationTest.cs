@@ -1,10 +1,9 @@
-﻿using AventStack.ExtentReports;
-using CompetitionTaskProjectMars.Helpers;
-using CompetitionTaskProjectMars.Models;
-using CompetitionTaskProjectMars.Pages;
+﻿using ProjectMars.Helpers;
+using ProjectMars.Models;
+using ProjectMars.Pages;
 
-namespace CompetitionTaskProjectMars.Tests
-{ 
+namespace ProjectMars.Tests
+{
     [TestFixture]
     public class CertificationTest : BaseClass
     {

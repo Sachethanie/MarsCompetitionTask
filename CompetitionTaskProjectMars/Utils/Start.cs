@@ -1,9 +1,8 @@
-﻿using CompetitionTaskProjectMars.Helpers;
-using CompetitionTaskProjectMars.Models;
-using CompetitionTaskProjectMars.Pages;
-using Newtonsoft.Json;
+﻿using ProjectMars.Helpers;
+using ProjectMars.Models;
+using ProjectMars.Pages;
 
-namespace CompetitionTaskProjectMars.Utils
+namespace ProjectMars.Utils
 {
     public  class Start : Driver
     {

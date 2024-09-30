@@ -1,10 +1,10 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
-using CompetitionTaskProjectMars.Utils;
 using OpenQA.Selenium.Chrome;
+using ProjectMars.Utils;
 
 
-namespace CompetitionTaskProjectMars.Helpers
+namespace ProjectMars.Helpers
 {
     public class BaseClass : Driver
     {
