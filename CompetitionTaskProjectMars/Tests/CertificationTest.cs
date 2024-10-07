@@ -21,7 +21,7 @@ namespace ProjectMars.Tests
             certificationPage.NavigateToCertificationForm();
         }
 
-     
+
 
         [SetUp, Order(1)]
         public void CleanUpBeforeTest()

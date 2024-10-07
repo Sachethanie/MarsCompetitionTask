@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using ProjectMars.Helpers;
+using ProjectMars.Models;
 
 namespace ProjectMars.Pages
 {
@@ -12,12 +13,12 @@ namespace ProjectMars.Pages
         private static IWebElement AddButton => driver.FindElement(By.XPath("//input[@type='button'and @class='ui teal button ']"));
         private static IWebElement UpdateButton => driver.FindElement(By.XPath("//input[@type='button' and @class='ui teal button']"));
         private static IWebElement CancelButton => driver.FindElement(By.XPath("//input[@class='ui button' and @value='Cancel']"));
-        public static void NavigateToSkillForm()
+        public void NavigateToSkillForm()
         {
             IWebElement skillTab = driver.FindElement(By.XPath("//a[@class='item' and text()='Skills']"));
             skillTab.Click();
         }
-        public static void CleaupAllSkillDataBeforeStartTest()
+        public void CleaupAllSkillDataBeforeStartTest()
         {
 
             var deleteButtons = driver.FindElements(By.XPath($"//div[@data-tab='second']//i[contains(@class, 'remove icon')]"));
@@ -34,26 +35,26 @@ namespace ProjectMars.Pages
         }
 
 
-        public static IWebElement GetEditPencilIcon(string skill)
+        public static IWebElement GetEditPencilIcon(Skills addSkill)
         {
-            return driver.FindElement(By.XPath($"//tr[td[text()='{skill}']]//i[contains(@class, 'outline write icon')]"));
+            return driver.FindElement(By.XPath($"//tr[td[text()='{addSkill.Skill}']]//i[contains(@class, 'outline write icon')]"));
         }
 
-        public static IWebElement GetDeletePencilIcon(string skill)
+        public static IWebElement GetDeletePencilIcon(Skills addSkill)
         {
-            return driver.FindElement(By.XPath($"//tr[td[text()='{skill}']]//i[contains(@class, 'remove icon')]"));
+            return driver.FindElement(By.XPath($"//tr[td[text()='{addSkill.Skill}']]//i[contains(@class, 'remove icon')]"));
         }
 
-        public void ViewSkillInTable(string skill, string level)
+        public void ViewSkillInTable(Skills addSkill)
         {
-            var skillRow = driver.FindElements(By.XPath($"//tr[td[text()='{skill}'] and td[text()='{level}']]"));
+            var skillRow = driver.FindElements(By.XPath($"//tr[td[text()='{addSkill.Skill}'] and td[text()='{addSkill.Level}']]"));
             Assert.That(skillRow, Is.Not.Null, "skill {skill}, level {level} was not found in the list");
         }
 
-        public void CannotViewSkillInTable(string skill)
+        public void CannotViewSkillInTable(Skills addSkill)
         {
-            var skillRow = driver.FindElements(By.XPath($"//tr[td[text()='{skill}']]"));
-            Assert.That(skillRow, Is.Empty, $"skill {skill} was found in the list, but it should have been deleted.");
+            var skillRow = driver.FindElements(By.XPath($"//tr[td[text()='{addSkill.Skill}']]"));
+            Assert.That(skillRow, Is.Empty, $"skill {addSkill.Skill} was found in the list, but it should have been deleted.");
         }
 
         public void AssertionPopupMessage(string expectedMessage)
@@ -64,79 +65,70 @@ namespace ProjectMars.Pages
             Assert.That(actualMessage, Is.EqualTo(expectedMessage));
         }
 
-        public void SuccessfullyAddNewSkill(string skill, string level)
+        public void SuccessfullyAddNewSkill(Skills addSkill)
         {
 
             AddNewButton.Click();
-            AddSkill.SendKeys(skill);
+            AddSkill.SendKeys(addSkill.Skill);
             SelectElement dropdown = new SelectElement(AddSkillLevel);
-            dropdown.SelectByText(level);
+            dropdown.SelectByText(addSkill.Level);
             AddButton.Click();
         }
 
-        public void CannotBeAbleToAddnewSkillWithoutAddingSkillLevel(string newSkill)
+        public void CannotBeAbleToAddnewSkillWithoutAddingSkillLevel(Skills addSkill)
         {
             AddNewButton.Click();
-            AddSkill.SendKeys(newSkill);
+            AddSkill.SendKeys(addSkill.Skill);
             AddButton.Click();
         }
 
-        public void SuccessfullyEditExistingSkillAndSkillLevel(string skill, string level, string newSkill, string newLevel)
+        public void CannotBeAbleToAddExistingSkillRecordAsANewSkillRecord(Skills addSkill)
         {
-            var editPencilIcon = GetEditPencilIcon(skill);
+            AddNewButton.Click();
+            AddSkill.SendKeys(addSkill.Skill);
+            SelectElement dropdown = new SelectElement(AddSkillLevel);
+            dropdown.SelectByText(addSkill.Level);
+            AddButton.Click();
+            CancelButton.Click();
+        }
+
+        public void SuccessfullyEditExistingSkillAndSkillLevel(Skills addSkill, Skills editSkill)
+        {
+            var editPencilIcon = GetEditPencilIcon(addSkill);
             editPencilIcon.Click();
             AddSkill.Clear();
-            AddSkill.SendKeys(newSkill);
+            AddSkill.SendKeys(editSkill.Skill);
             SelectElement dropdown = new SelectElement(AddSkillLevel);
             AddSkillLevel.Click();
-            AddSkillLevel.SendKeys(newLevel);
+            AddSkillLevel.SendKeys(editSkill.Level);
             AddSkillLevel.SendKeys(Keys.Enter);
             UpdateButton.Click();
         }
-
-        public void SuccsfullyEditOnlyExistingSkillToANewSkillWithoutEditSkillLevel(string skill, string newSkill)
+       
+        public void CannotBeAbleToEditExistngSkillAndSkillLevelToAnotherExistingSkill(Skills addSkill, Skills editSkill)
         {
-            var editPencilIcon = GetEditPencilIcon(skill);
+            var editPencilIcon = GetEditPencilIcon(addSkill);
             editPencilIcon.Click();
             AddSkill.Clear();
-            AddSkill.SendKeys(newSkill);
-            UpdateButton.Click();
-        }
-
-        public void SuccsfullyEditSkillLevelWithoutEditSkill(string skill, string level, string newLevel)
-        {
-            var editPencilIcon = GetEditPencilIcon(skill);
-            editPencilIcon.Click();
+            AddSkill.SendKeys(addSkill.Skill);
             SelectElement dropdown = new SelectElement(AddSkillLevel);
             AddSkillLevel.Click();
-            AddSkillLevel.SendKeys(newLevel);
+            AddSkillLevel.SendKeys(addSkill.Level);
             AddSkillLevel.SendKeys(Keys.Enter);
             UpdateButton.Click();
+            CancelButton.Click();
         }
 
-        public void CannotBeAbleToEditExistngSkillAndSkillLevelToAnotherExistingSkill(string skill, string level, string newSkill, string newLevel)
+        public void SuccesffullydeleteExistingSkill(Skills addSkill)
         {
-            var editPencilIcon = GetEditPencilIcon(skill);
-            editPencilIcon.Click();
-            AddSkill.Clear();
-            AddSkill.SendKeys(newSkill);
-            SelectElement dropdown = new SelectElement(AddSkillLevel);
-            AddSkillLevel.Click();
-            AddSkillLevel.SendKeys(newLevel);
-            AddSkillLevel.SendKeys(Keys.Enter);
-            UpdateButton.Click();
-        }
-
-        public void SuccesffullydeleteExistingSkill(string skill)
-        {
-            var deletePencilIcon = GetDeletePencilIcon(skill);
+            var deletePencilIcon = GetDeletePencilIcon(addSkill);
             deletePencilIcon.Click();
 
         }
-        public static void CleanUpExistingSkill(string skill)
+        public void CleanUpAddedSkillAfterTest(Skills addSkill)
         {
             Thread.Sleep(3000);
-            var deletePencilIcon = GetDeletePencilIcon(skill);
+            var deletePencilIcon = GetDeletePencilIcon(addSkill);
 
             deletePencilIcon?.Click();
         }
